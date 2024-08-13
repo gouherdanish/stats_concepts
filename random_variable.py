@@ -13,7 +13,7 @@ class RandomVariable:
     def __init__(self,events: List[RandomEvent]) -> None:
         self.events = events
         self._X     = np.array([event.x for event in self.events])
-        self._pX    = np.array([event.px for event in self.events])
+        self._pX    = np.array([event.prob for event in self.events])
 
     def __str__(self) -> str:
         return str(self.distribution())

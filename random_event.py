@@ -17,7 +17,7 @@ class RandomEvent:
     def __init__(self,x:Any='Sample Event',prob:float=1.0) -> None:
         self.x = x
         self.prob = prob
-
+            
     def __str__(self) -> str:
         return f"Event(x='{self.x}', p(x)={self.prob:.2f})"
     
