@@ -1,7 +1,21 @@
 import numpy as np
+from typing import Any
 
 class RandomEvent:
-    def __init__(self,x=0,prob=0) -> None:
+    """
+    Defines a random event whose probability is given
+        `x` represents the 
+        prob ->
+
+    Example:
+        from random_event import RandomEvent
+        event1 = RandomEvent(x='Getting six when a fair die is thrown', prob=1/6
+        event2 = RandomEvent(x='Getting head when a coin is flipped', prob=1/2)
+
+        print(event1.information)   # 1.791759469228055
+        print(event2.information)   # 0.693147180559945
+    """
+    def __init__(self,x:Any=0,prob:float=1.0) -> None:
         self.x = x
         self.prob = prob
 

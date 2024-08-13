@@ -36,10 +36,10 @@ class RandomVariable:
 if __name__=='__main__':
     # Number of heads in 3 consective coin flips and their probabilities
     events = [
-        RandomEvent(0,0.125),
-        RandomEvent(1,0.375),
-        RandomEvent(2,0.375),
-        RandomEvent(3,0.125),
+        RandomEvent(x=0,prob=0.125),
+        RandomEvent(x=1,prob=0.375),
+        RandomEvent(x=2,prob=0.375),
+        RandomEvent(x=3,prob=0.125),
     ]
     X = RandomVariable(events)
     print(f'Random Variable, X = {X}')
