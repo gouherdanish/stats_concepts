@@ -4,13 +4,13 @@ from typing import Any
 class RandomEvent:
     """
     Defines a random event whose probability is given
-        `x` represents the 
-        prob ->
+        `x` represents the event
+        `prob` represents the probability of that event
 
     Example:
         from random_event import RandomEvent
-        event1 = RandomEvent(x='Getting six when a fair die is thrown', prob=1/6
-        event2 = RandomEvent(x='Getting head when a coin is flipped', prob=1/2)
+        event1 = RandomEvent(x='Getting a six when a fair die is thrown', prob=1/6)
+        event2 = RandomEvent(x='Getting a head when a coin is flipped', prob=1/2)
 
         print(event1.information)   # 1.791759469228055
         print(event2.information)   # 0.693147180559945
@@ -20,7 +20,7 @@ class RandomEvent:
         self.prob = prob
 
     def __str__(self) -> str:
-        return f'Event(x={self.x}, p(x)={self.prob:.2f})'
+        return f"Event(x='{self.x}', p(x)={self.prob:.2f})"
     
     def __repr__(self) -> str:
         return str(self)
