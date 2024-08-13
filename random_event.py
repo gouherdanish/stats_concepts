@@ -7,15 +7,14 @@ class RandomEvent:
         `x` represents the event
         `prob` represents the probability of that event
 
-    Example:
-        from random_event import RandomEvent
+    Usage:
         event1 = RandomEvent(x='Getting a six when a fair die is thrown', prob=1/6)
         event2 = RandomEvent(x='Getting a head when a coin is flipped', prob=1/2)
 
         print(event1.information)   # 1.791759469228055
         print(event2.information)   # 0.693147180559945
     """
-    def __init__(self,x:Any=0,prob:float=1.0) -> None:
+    def __init__(self,x:Any='Sample Event',prob:float=1.0) -> None:
         self.x = x
         self.prob = prob
 
