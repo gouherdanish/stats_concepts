@@ -1,5 +1,5 @@
 import numpy as np
-from typing import List
+from typing import List, Union
 from random_event import RandomEvent
 
 class RandomVariable:
@@ -10,8 +10,8 @@ class RandomVariable:
         X       = number of heads in 3 consecutive coin flips = {0,1,2,3}
         p(X)    = {1/8,3/8,3/8,1/8}
     """
-    def __init__(self,events: List[RandomEvent]) -> None:
-        self.events = events
+    def __init__(self,events: Union[List[RandomEvent],List[tuple]]) -> None:
+        self.events = events if isinstance(events[0],RandomEvent) else [RandomEvent(t[0],t[1]) for t in events] 
         self._X     = np.array([event.x for event in self.events])
         self._pX    = np.array([event.prob for event in self.events])
 
@@ -25,7 +25,9 @@ class RandomVariable:
         return np.array([event.information for event in self.events])
 
     def expectation(self):
-        return sum(self._pX * self._X)
+        if isinstance(self._X[0],int):
+            return sum(self._pX * self._X)
+        raise ValueError(f'Random Variable must be integer to calculate its Expectation')
     
     def entropy(self):
         """
@@ -33,6 +35,18 @@ class RandomVariable:
         """
         return sum(self._pX * self.information())
 
+    def cross_entropy(self,other):
+        """
+        Measures how well the other probability distribution approximates this one
+        """
+        return sum(self._pX * other.information())
+    
+    def kl_divergence(self,other):
+        """
+        Measures how well the other probability distribution approximates this one
+        """
+        return self.cross_entropy(other) - self.entropy()
+    
 if __name__=='__main__':
     # Number of heads in 3 consective coin flips and their probabilities
     events = [
